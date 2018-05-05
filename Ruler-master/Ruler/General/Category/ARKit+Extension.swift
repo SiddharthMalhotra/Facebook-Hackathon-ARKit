@@ -1,11 +1,3 @@
-//
-//  ARSCNView+Position.swift
-//  Ruler
-//
-//  Created by Tbxark on 18/09/2017.
-//  Copyright © 2017 Tbxark. All rights reserved.
-//
-
 import UIKit
 import SceneKit
 import ARKit
@@ -70,12 +62,12 @@ extension ARSCNView {
         
         let highQualityfeatureHitTestResults = sceneView.hitTestWithFeatures(position, coneOpeningAngleInDegrees: 5, minDistance: 0.1, maxDistance: 3.0)
         
-        // 过滤特征点
+
         let featureCloud = sceneView.fliterWithFeatures(highQualityfeatureHitTestResults)
         
         if featureCloud.count >= 3 {
             
-            // 根据特征点进行平面推定
+
             let (detectPlane, planePoint) = planeDetectWithFeatureCloud(featureCloud: featureCloud)
                     
             let ray = sceneView.hitTestRayFromScreenPos(position)
@@ -309,11 +301,7 @@ extension ARSCNView {
                                     featureHit: closestFeaturePoint,
                                     featureDistanceToHitResult: minDistance)
     }
-    
-    /// 去除偏差值大于 3σ 的值
-    ///
-    /// - Parameter features: 特征数据
-    /// - Returns: 剔除后的数据
+
     func fliterWithFeatures(_ features:[FeatureHitTestResult]) -> [SCNVector3] {
         guard features.count >= 3 else {
             return features.map { (featureHitTestResult) -> SCNVector3 in
@@ -324,15 +312,15 @@ extension ARSCNView {
         var points = features.map { (featureHitTestResult) -> SCNVector3 in
             return featureHitTestResult.position
         }
-        // 平均值
+
         let average = points.average!
-        // 方差
+
         let variance = sqrtf(points.reduce(0) { (sum, point) -> Float in
             var sum = sum
             sum += (point-average).length()*100*(point-average).length()*100
             return sum
             }/Float(points.count-1))
-        // 标准差
+
         let standard = sqrtf(variance)
         let σ = variance/standard
         points = points.filter { (point) -> Bool in

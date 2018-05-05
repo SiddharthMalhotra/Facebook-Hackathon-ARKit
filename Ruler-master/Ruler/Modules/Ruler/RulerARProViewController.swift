@@ -1,11 +1,3 @@
-//
-//  RulerARProViewController.swift
-//  Ruler
-//
-//  Created by Tbxark on 25/09/2017.
-//  Copyright © 2017 Tbxark. All rights reserved.
-//
-
 import UIKit
 import SceneKit
 import ARKit
@@ -110,6 +102,8 @@ class RulerARProViewController: UIViewController {
                 case .insufficientFeatures:
                     HUG.show(title: Localization.arExcessiveMotion(), message: Localization.arInitializingMessage(), inSource: self, autoDismissDuration: 5)
                 case .excessiveMotion:
+                    HUG.show(title: Localization.arExcessiveMotion(), message: Localization.arExcessiveMotionMessage(), inSource: self, autoDismissDuration: 5)
+                case .relocalizing:
                     HUG.show(title: Localization.arExcessiveMotion(), message: Localization.arExcessiveMotionMessage(), inSource: self, autoDismissDuration: 5)
                 }
             case .normal:
@@ -273,7 +267,7 @@ class RulerARProViewController: UIViewController {
 
 // MARK: - Target Action
 @objc private extension RulerARProViewController {
-    // 保存测量结果
+
     func saveImage(_ sender: UIButton) {
         func saveImage(image: UIImage) {
             PHPhotoLibrary.shared().performChanges({
@@ -304,7 +298,7 @@ class RulerARProViewController: UIViewController {
     }
     
     
-    // 放置测量点
+
     func placeAction(_ sender: UIButton) {
         UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [.allowUserInteraction,.curveEaseOut], animations: {
             sender.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
@@ -338,7 +332,7 @@ class RulerARProViewController: UIViewController {
         }
     }
     
-    // 重置视图
+
     func restartAction(_ sender: UIButton) {
         showMenuAction(sender)
         line?.removeFromParent()
@@ -356,7 +350,7 @@ class RulerARProViewController: UIViewController {
         measureValue = nil
     }
     
-    // 删除上一操作
+
     func deleteAction(_ sender: UIButton) {
         switch mode {
         case .length:
@@ -384,14 +378,14 @@ class RulerARProViewController: UIViewController {
     }
     
     
-    // 复制测量结果
+
     func copyAction(_ sender: UIButton) {
         UIPasteboard.general.string = resultLabel.text
         HUG.show(title: "已复制到剪贴版")
     }
     
     
-    // 跳转设置
+
     func moreAction(_ sender: UIButton) {
         guard let vc = UIStoryboard(name: "SettingViewController", bundle: nil).instantiateInitialViewController() else {
             return
@@ -401,7 +395,7 @@ class RulerARProViewController: UIViewController {
     }
     
     
-    // 显示菜单
+
     func showMenuAction(_ sender: UIButton) {
         if menuButtonSet.isOn {
             menuButtonSet.dismiss()
@@ -412,7 +406,7 @@ class RulerARProViewController: UIViewController {
         }
     }
     
-    // 完成面积测量
+
     func finishAreaAction(_ sender: UIButton) {
         guard mode == .area,
             let line = lineSet,
@@ -427,7 +421,6 @@ class RulerARProViewController: UIViewController {
     
     
     
-    // 变换面积测量完成按钮状态
     func changeFinishState(state: Bool) {
         guard finishButtonState != state else { return }
         finishButtonState = state
@@ -440,7 +433,7 @@ class RulerARProViewController: UIViewController {
         }
     }
     
-    // 变换测量单位
+
     func changeMeasureUnitAction(_ sender: UITapGestureRecognizer) {
         measureUnit = measureUnit.next()
     }
