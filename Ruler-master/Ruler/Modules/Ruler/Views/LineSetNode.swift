@@ -1,11 +1,3 @@
-//
-//  LineSetNode.swift
-//  Ruler
-//
-//  Created by Tbxark on 20/09/2017.
-//  Copyright © 2017 Tbxark. All rights reserved.
-//
-
 import UIKit
 import SceneKit
 import ARKit

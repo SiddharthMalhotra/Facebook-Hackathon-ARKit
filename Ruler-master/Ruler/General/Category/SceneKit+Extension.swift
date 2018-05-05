@@ -1,11 +1,3 @@
-//
-//  SceneKit+Extension.swift
-//  Ruler
-//
-//  Created by Tbxark on 25/09/2017.
-//  Copyright © 2017 Tbxark. All rights reserved.
-//
-
 import UIKit
 import SceneKit
 
@@ -65,6 +57,7 @@ extension SCNNode {
 extension SCNVector3 {
     
     init(_ vec: vector_float3) {
+        self.init()
         self.x = vec.x
         self.y = vec.y
         self.z = vec.z
