@@ -187,7 +187,7 @@ class RulerARProViewController: UIViewController {
             resultLabelBg.clipsToBounds = true
             
             let copy = UIButton(size: CGSize(width: 30, height: 30), image: Image.Result.copy)
-            copy.addTarget(self, action: #selector(RulerARProViewController.copyAction(_:)), for: .touchUpInside)
+            copy.addTarget(self, action: #selector(RulerARProViewController.moreAction(_:)), for: .touchUpInside)
             
             let tap = UITapGestureRecognizer(target: self, action: #selector(RulerARProViewController.changeMeasureUnitAction(_:)))
             resultLabel.addGestureRecognizer(tap)
@@ -377,11 +377,7 @@ class RulerARProViewController: UIViewController {
     
     
 
-    func copyAction(_ sender: UIButton) {
-        UIPasteboard.general.string = resultLabel.text
-        HUG.show(title: "已复制到剪贴版")
-    }
-    
+
     
 
     func moreAction(_ sender: UIButton) {
