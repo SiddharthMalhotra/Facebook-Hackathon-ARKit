@@ -45,7 +45,7 @@ class RulerARProViewController: UIViewController {
             static let disable = #imageLiteral(resourceName: "img_indicator_disable")
         }
         struct Result {
-            static let copy = #imageLiteral(resourceName: "result_copy")
+           // static let copy = #imageLiteral(resourceName: "result_copy")
         }
     }
     
@@ -188,8 +188,8 @@ class RulerARProViewController: UIViewController {
             resultLabelBg.layer.cornerRadius = 45
             resultLabelBg.clipsToBounds = true
             
-            let copy = UIButton(size: CGSize(width: 30, height: 30), image: Image.Result.copy)
-            copy.addTarget(self, action: #selector(RulerARProViewController.moreAction(_:)), for: .touchUpInside)
+//            let copy = UIButton(size: CGSize(width: 30, height: 30), image: Image.Result.copy)
+//            copy.addTarget(self, action: #selector(RulerARProViewController.moreAction(_:)), for: .touchUpInside)
             
             let tap = UITapGestureRecognizer(target: self, action: #selector(RulerARProViewController.changeMeasureUnitAction(_:)))
             resultLabel.addGestureRecognizer(tap)
@@ -197,15 +197,15 @@ class RulerARProViewController: UIViewController {
             
             
             resultLabelBg.frame = CGRect(x: 30, y: 30, width: width - 60, height: 90)
-            copy.frame = CGRect(x: resultLabelBg.frame.maxX - 10 - 30,
-                                y: resultLabelBg.frame.minY + (resultLabelBg.frame.height - 30)/2,
-                                width: 30, height: 30)
+//            copy.frame = CGRect(x: resultLabelBg.frame.maxX - 10 - 30,
+//                                y: resultLabelBg.frame.minY + (resultLabelBg.frame.height - 30)/2,
+//                                width: 30, height: 30)
             resultLabel.frame = resultLabelBg.frame.insetBy(dx: 10, dy: 0)
             resultLabel.attributedText = mode.toAttrStr()
             
             view.addSubview(resultLabelBg)
             view.addSubview(resultLabel)
-            view.addSubview(copy)
+//            view.addSubview(copy)
 
             
             
