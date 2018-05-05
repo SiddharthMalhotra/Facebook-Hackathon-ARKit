@@ -103,8 +103,6 @@ class RulerARProViewController: UIViewController {
                     HUG.show(title: Localization.arExcessiveMotion(), message: Localization.arInitializingMessage(), inSource: self, autoDismissDuration: 5)
                 case .excessiveMotion:
                     HUG.show(title: Localization.arExcessiveMotion(), message: Localization.arExcessiveMotionMessage(), inSource: self, autoDismissDuration: 5)
-                case .relocalizing:
-                    HUG.show(title: Localization.arExcessiveMotion(), message: Localization.arExcessiveMotionMessage(), inSource: self, autoDismissDuration: 5)
                 }
             case .normal:
                 HUG.dismiss()
